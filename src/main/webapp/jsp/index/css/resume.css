@@ -1,0 +1,67 @@
+/* form表单背景色 */
+div.content-back{
+    background-color: #f3f3f2;
+    /* background-color: white; */
+}
+/* 去除输入框默认样式 */
+input{
+    box-shadow: none !important;
+}
+textarea{
+    box-shadow: none !important;
+    border: 1px;
+    border-color: #dee2e6 !important;
+    /* 禁止拉伸 */
+    resize: none;
+}
+/* 输入框动画 */
+input:focus{
+    box-shadow: 0 3px 5px 0 rgba(48, 55, 66, 0.15) !important;
+    transform: translate(0, -5px);
+    transition-delay: 0s !important;
+}
+textarea:focus{
+    box-shadow: 0 3px 5px 0 rgba(48, 55, 66, 0.15) !important;
+    transform: translate(0, -5px);
+    transition-delay: 0s !important;
+}
+/* 按钮颜色 */
+.row .btn-back{
+    color: white;
+    background-color: #fd5631;
+}
+/* 按钮点击效果 */
+
+.row .btn-back{
+    -webkit-transition: all 250ms cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: all 250ms cubic-bezier(.02, .01, .47, 1);
+}
+.row .btn-back:hover {
+    box-shadow: 0 16px 32px 0 rgba(48, 55, 66, 0.15) !important;
+    transform: translate(0, -5px);
+    transition-delay: 0s !important;
+}
+
+/* 图标样式 */
+svg.bi-person-workspace{
+   
+    color: #fd5631;
+    margin-top: -5px ;
+}
+/* 标题样式 */
+h2.title{
+    color: #443e3c;
+}
+h2.title:hover{
+    color: #fd5631;
+    
+}
+
+
+
+
+
+
+
+
+

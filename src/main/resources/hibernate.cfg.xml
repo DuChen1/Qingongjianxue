@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--使用 Hibernate 自带的连接池配置-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/homework?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=true&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">14344133</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <!--hibernate 方言: 解决hql翻译成sql保证语法的正确-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!--打印sql语句-->
+        <property name="hibernate.show_sql">true</property>
+        <!--格式化sql-->
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!-- 映射注解 -->
+        <mapping class="com.niit.entity.Student"/>
+        <mapping class="com.niit.entity.Employer"/>
+        <mapping class="com.niit.entity.Admin"/>
+        <mapping class="com.niit.entity.Resume"/>
+        <mapping class="com.niit.entity.Message"/>
+        <mapping class="com.niit.entity.MessageResume"/>
+        <mapping class="com.niit.entity.Notice"/>
+
+
+    </session-factory>
+</hibernate-configuration>

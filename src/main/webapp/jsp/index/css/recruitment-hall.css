@@ -1,0 +1,91 @@
+
+
+/* 主体 */
+
+/* 图片样式 */
+
+
+/* 卡片浮动 */
+.card {
+    border: none;
+    /* border-radius: 10px; */
+    /* max-width: 1000px; */
+
+    -webkit-transition: all 250ms cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: all 250ms cubic-bezier(.02, .01, .47, 1);
+}
+
+/* 悬停动画 */
+.card:hover {
+    box-shadow: 0 16px 32px 0 rgba(48, 55, 66, 0.15);
+    transform: translate(0, -5px);
+    transition-delay: 0s !important;
+}
+
+/* 阴影 */
+.box-shadow {
+    -webkit-box-shadow: 0 0.25rem 1rem rgba(48, 55, 66, 0.15);
+    /* box-shadow: 0 4px 20px rgba(48, 55, 66, 0.15); */
+    /* box-shadow: 0 4px 20px rgba(17, 104, 244, 0.15); */
+    box-shadow: #666362;
+
+}
+/* 去除卡片默认边框 */
+.col{
+    padding: 0;
+}
+div.card{
+    padding: 0px;
+}
+/* 卡片背景色 */
+div.card-body{
+    background-color: #f3f3f2;
+}
+div.title-back{
+    background-color: #F9F9F8;
+}
+/* 去除按钮默认样式 */
+div a.btn {
+    box-shadow: none !important;
+}
+button.btn{
+    box-shadow: none !important;
+}
+/* 按钮颜色 */
+.row .btn-back{
+    color: white;
+    background-color: #fd5631;
+}
+/* 按钮点击效果 */
+
+.row .btn-back{
+    -webkit-transition: all 250ms cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: all 250ms cubic-bezier(.02, .01, .47, 1);
+}
+.row .btn-back:hover {
+    box-shadow: 0 16px 32px 0 rgba(48, 55, 66, 0.15) !important;
+    transform: translate(0, -5px);
+    transition-delay: 0s !important;
+}
+/* 标题样式 */
+h2.title{
+    color: #443e3c;
+}
+h2.title:hover{
+    color: #fd5631;
+    
+}
+
+/* 模块图标样式 */
+svg.bi-briefcase-fill{
+   
+    color: #fd5631;
+}
+
+.btn-o{
+    background-color: #fd5631;
+}
+
+
+
+

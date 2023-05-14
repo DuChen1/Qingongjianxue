@@ -1,0 +1,99 @@
+body {
+    background-color: #f5f4f8;
+}
+
+/* 导航栏 */
+
+/* logo */
+#logo {
+    margin-top: 50px;
+}
+
+/* 导航栏按钮样式 */
+a {
+    color: rgb(60, 60, 60) !important;
+}
+
+nav a:hover {
+    color: #fd5631 !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* 图片高度 */
+.d-block {
+    max-height: 520px !important;
+}
+/* 竖线 */
+.line {
+    width: 1.5px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 700px;
+    /* margin-right: 0px; */
+    background-color: rgb(115, 111, 111);
+}
+
+/* 右上角按钮 */
+button.btn {
+    color: rgb(118, 117, 117);
+    margin-top: 13px;
+    margin-left: 20px;
+    /* margin: 0; */
+}
+
+.btn-outline-warning {
+    outline: none !important;
+}
+/* 右上角图标 */
+/* .user-icon {
+    color: #666362;
+} */
+/* 下拉菜单 */
+ul.dropdown-menu {
+    border-radius: 10px;
+}
+
+/* 页脚 */
+.footer{
+    height: 450px;
+    margin-top: 40px;
+
+}
+.footer .footer-title{
+    /* text-align: center; */
+    padding-top: 80px;   
+    /* padding-left: 100px;  */
+    
+}
+.footer-title2{
+    margin-left: 63px;
+}
+/* 页脚左侧文字样式 */
+.footer .row .col-3{
+    margin-top: 50px;
+    text-indent:2em
+}
+
+/* 链接位置 */
+div.col-9 .row .col{
+    margin-top: 25px;
+
+    margin-left: -36px;
+}
+/* 页脚链接样式 */
+div.col-9 a:hover{
+    color: #fd5631 !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+/* 页脚下划线 */
+.footer-line{
+    height: 1.5px;
+    margin-top: 40px;
+    background-color: #717070;
+}
+p.text-center{
+    color: #717070;
+    
+}

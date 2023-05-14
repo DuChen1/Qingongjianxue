@@ -1,0 +1,75 @@
+body {
+    background-color: #f5f4f8;
+}
+.top-back{
+    /* background-color: #282829; */
+    
+    max-height: 70px;
+    /* width: 1235px ; */
+    /* max-width: 1235px ; */
+}
+/* 垂直导航栏样式 */
+div.navbar-box {
+    /* width: 300px; */
+    /* max-width: 300px; */
+    height: 710px;
+
+    /* margin-left: 40px; */
+    background-color: #20232b;
+}
+
+/* 菜单位置 */
+div ul {
+    margin-left: 40px;
+}
+
+/* 导航栏标题样式 */
+div.navbar-box .menu-title {
+    color: #99999e;
+    margin-left: 3px;
+}
+
+.sub-title {
+    color: #99999e;
+}
+
+div.navbar-box .menu-title:hover {
+    /* font-weight: bold; */
+    color: #FFFFFF;
+    /* color: coral; */
+
+}
+
+/* 导航栏图标样式 */
+svg.bi {
+    margin-top: -5px;
+    color: #99999e;
+    
+    /* color: coral; */
+
+}
+
+svg.bi-person-gear {
+    color: coral;
+    background-color: rgb(55, 43, 43);
+    margin-left: 30px;
+}
+
+/* svg.bi:hover{
+    color:  #FFFFFF;
+
+} */
+/* 导航栏字体大小 */
+span.menu-title {
+    font-size: 18px;
+}
+
+.title-hover:hover {
+    color: #FFFFFF;
+
+}
+
+.sub-title:hover{
+    background-color: #2a2a2c;
+
+}

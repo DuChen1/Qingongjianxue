@@ -1,0 +1,87 @@
+
+
+/* 主体 */
+
+/* 图片样式 */
+.img{
+    
+    border-radius: 15px;
+    max-width: 620px;
+    max-height: 360px;
+}
+
+/* 卡片浮动 */
+.card {
+    border: none;
+    border-radius: 15px;
+    max-width: 620px;
+
+    -webkit-transition: all 250ms cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: all 250ms cubic-bezier(.02, .01, .47, 1);
+}
+
+/* 悬停动画 */
+.card:hover {
+    box-shadow: 0 16px 32px 0 rgba(48, 55, 66, 0.15);
+    transform: translate(0, -5px);
+    transition-delay: 0s !important;
+}
+
+/* 阴影 */
+.box-shadow {
+    -webkit-box-shadow: 0 0.25rem 1rem rgba(48, 55, 66, 0.15);
+    /* box-shadow: 0 4px 20px rgba(48, 55, 66, 0.15); */
+    /* box-shadow: 0 4px 20px rgba(17, 104, 244, 0.15); */
+    box-shadow: #666362;
+
+}
+/* 去除卡片默认边框 */
+.col{
+    padding: 0;
+}
+/* .card-body:hover{
+    color: #fd5631;
+} */
+/* 模块图标样式 */
+svg.bi-cup-hot-fill{
+    margin-left: 140px;
+    margin-top: 60px;
+    color: #fd5631;
+}
+svg.bi-vector-pen{
+    margin-left: 140px;
+    margin-top: 60px;
+    color: #fd5631;
+}
+svg.bi-journal-text{
+    margin-left: 140px;
+    margin-top: 60px;
+    color: #fd5631;
+}
+svg.bi-currency-exchange{
+    margin-left: 140px;
+    margin-top: 60px;
+    color: #fd5631;
+}
+/* 模块标题 */
+.title{
+    margin-left: 140px;
+    
+}
+/* 模块内容 */
+
+.content{
+    margin-left: 138px;
+    max-width: 380px;
+        
+}
+/* 鼠标悬停样式 */
+.title:hover{
+    color: #fd5631;
+    font-weight: bold;
+}
+.content:hover{
+    color: #fd5631;
+    /* font-weight: bold; */
+}
+

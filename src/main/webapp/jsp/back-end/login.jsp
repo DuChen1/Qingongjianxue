@@ -19,7 +19,8 @@
     <%--导入登录界面的css样式--%>
     </style>
 </head>
-<body style="background-image: url(../../jsp/back-end/img/background.jpg)" >
+<%--<body style="background-image: url(././/jsp/back-end/img/background.jpg)" >--%>
+<body style="background-image: url(../back-end/img/background.jpg)" >
 <div class="htmleaf-container">
     <div class="login-wrap">                            <%-- 登录界面的div块--%>
         <div class="login-html">
@@ -43,7 +44,7 @@
                         </div>
                         <div class="group">
                             <input id="check" type="checkbox" class="check" name="check">
-<%--                            <label for="check"><span class="icon"></span>记住密码</label>--%>
+                            <%--                            <label for="check"><span class="icon"></span>记住密码</label>--%>
                             <a href="${pageContext.request.contextPath}/login/toAddStudent" class="reg">没有账号?立即注册</a>
                             <p class="error">&nbsp;${message}</p>              <%--若用户登录失败，将在此显示用户登录失败的信息--%>
                         </div>
@@ -55,23 +56,23 @@
                     </form>
                 </div>
                 <div class="sign-up-htm">
-<%--                    <form action="${pageContext.request.contextPath}/admin/adminLogin" method="post" name="form_admin">   &lt;%&ndash;管理员登录的表单，提交给AdminLoginServlet进行处理&ndash;%&gt;--%>
+                    <%--                    <form action="${pageContext.request.contextPath}/admin/adminLogin" method="post" name="form_admin">   &lt;%&ndash;管理员登录的表单，提交给AdminLoginServlet进行处理&ndash;%&gt;--%>
                     <form action="${pageContext.request.contextPath}/admin/adminLogin" method="post">   <%--管理员登录的表单，提交给AdminLoginServlet进行处理--%>
                         <div class="group">
                             <label class="label">管理员账号</label>
-                            <input name="adminUsername" type="text" class="input" >
+                            <input name="adminUsername" id="adminUsername" type="text" class="input" >
                         </div>
                         <div class="group">
                             <label class="label">管理员密码</label>
                             <input name="pwd" type="password" class="input" >
                         </div>
                         <div class="group">
-<%--                            <p>暂不支持记住密码及注册</p>--%>
+                            <%--                            <p>暂不支持记住密码及注册</p>--%>
                             <p class="error">&nbsp;${message}</p>            <%--若管理员登录失败，将在此显示管理员登录失败的信息--%>
                         </div>
                         <div class="group">
                             <%--以button方式进行javascript点击函数处理，验证管理员登录格式，并提交--%>
-                            <input type="submit" class="button"  value="登录">
+                            <input type="submit" class="button" onclick="checkusername()" value="登录">
                         </div>
                     </form>
                 </div>
@@ -79,6 +80,15 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function checkusername(){
+        var d=document.getElementById('adminUsername').value;
+        if(d.length>15){
+            alert("最大只可以输入15个字符");
+            event.preventDefault();
+        }
 
+    }
+</script>
 </body>
 </html>

@@ -14,6 +14,10 @@ import javax.persistence.*;
 @Table(name = "message_resume")
 public class MessageResume {
 
+
+  @ManyToOne
+  @JoinColumn(name = "message_id")
+  private Message message;
   /**
    * id
    */
@@ -22,7 +26,7 @@ public class MessageResume {
   /**
    * 招聘信息id
    */
-  @Column(name = "message_id")
+  @Column(name = "message_id",insertable = false, updatable = false)
   private String messageId;
   /**
    * 简历id
@@ -35,6 +39,12 @@ public class MessageResume {
    */
   @Column(name = "student_id")
   private  Integer studentId;
+
+  /**
+   * 简历状态
+   */
+  @Column(name = "pass")
+  private String pass;
 
   public Integer getStudentId() {
     return studentId;
@@ -66,5 +76,13 @@ public class MessageResume {
 
   public void setResumeId(String resumeId) {
     this.resumeId = resumeId;
+  }
+
+  public String getPass() {
+    return pass;
+  }
+
+  public void setPass(String pass) {
+    this.pass = pass;
   }
 }

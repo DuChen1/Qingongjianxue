@@ -1,5 +1,8 @@
 package com.niit.dao;
 
+import com.niit.entity.MessageResume;
+import com.niit.entity.MessageState;
+import com.niit.entity.Resume;
 import com.niit.entity.Student;
 
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.List;
 
 public interface StudentDao {
 
-
+    List<MessageState> findResumeStateByStudentId(String studentId);
     void addStudent(Student student);
 
     void deleteStudent(Integer studentId);
@@ -23,6 +26,10 @@ public interface StudentDao {
     List<Student> findAllStudent();
 
     Student findStudentById(int studentId);
+
+    MessageResume findAllResumeMessage();
+    //查看某个学生简历的申请情况
+    List <Resume> findPersonalResume(String studentId);
 
 //    Student findStudentById(Integer studentId);
 }

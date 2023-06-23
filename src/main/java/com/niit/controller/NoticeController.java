@@ -2,17 +2,11 @@ package com.niit.controller;
 
 import com.niit.entity.Message;
 import com.niit.entity.Notice;
-import com.niit.entity.Resume;
-import com.niit.entity.Student;
 import com.niit.service.MessageService;
 import com.niit.service.NoticeService;
 import com.niit.service.ResumeService;
-import com.niit.service.impl.ResumeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -35,8 +29,40 @@ public class NoticeController {
     MessageService messageService;
     @Resource
     NoticeService noticeService;
+
+    @Resource
+    ResumeService resumeService;
 //    @Resource
-    ResumeService resumeService = new ResumeServiceImpl();
+//    ResumeService resumeService = new ResumeServiceImpl();
+
+    /**
+     * 公司查看所有用户的信息并进行信息审核
+     * 2023.6.22 10：43
+     */
+//    @RequestMapping("employerAllNotices")
+//    public String allEmployerNotice(Model model){
+//        List<Resume> resumeList =resumeService.findAllResume();
+//        model.addAttribute("list", list);
+//        System.out.println("从后端查出来的管理员message列表"+list);
+//        return "back-end/info-check";
+//    }
+
+    /**
+     * 公司查看自己发布的所有信息
+     * @param model
+     * @return
+     */
+    @RequestMapping("employerAllMessages")
+    public String allEmployerMessage(Model model, HttpSession session){
+
+        int employerId = (int)session.getAttribute("employerId");
+        System.out.println("从session中获取的employerId"+employerId);
+        List<Message> list =messageService.findMessageByEmployerId(employerId);
+        model.addAttribute("messageList", list);
+        System.out.println("从后端查出来的管理员message列表"+list);
+        return "index/recruitment-employerid-allmessage";
+    }
+
 
     @RequestMapping("adminAllNotices")
     public String allNotice(Model model){

@@ -10,6 +10,10 @@ import java.util.List;
  */
 public interface ResumeDao {
 
+    void updateResumePassOrNot(String resumeId, String passOrNot);
+    List<Resume> findAllResumeByMessageId(String messageId);
+    List<Resume> findResumeByPositionId(String positionId);
+
     void add(Resume resume);
 
     void delete(Integer id);

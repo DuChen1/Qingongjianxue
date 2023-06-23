@@ -65,7 +65,8 @@ public class LoginController {
 
     @RequestMapping("/studentLogin")
     public String studentLogin(HttpSession session,String username,String pwd,HttpServletRequest request) {
-
+        System.out.println("密码是：");
+        System.out.println(pwd);
 
         if (username.equals("")){
             session.setAttribute("message","请输入用户名");
@@ -90,7 +91,7 @@ public class LoginController {
             if (employer.getEmployerId().equals(id)&&employer.getPassword().equals(pwd)){
                 System.out.println("部门验证通过");
                 session.setAttribute("name",employer.getEmployerName());
-                session.setAttribute("studentId",employer.getEmployerId());
+                session.setAttribute("employerId",employer.getEmployerId());
                 return "index/index1";
             }
             else {

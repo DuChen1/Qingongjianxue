@@ -1,6 +1,7 @@
 package com.niit.dao.impl;
 
 import com.niit.dao.ResumeDao;
+import com.niit.entity.Message;
 import com.niit.entity.MessageResume;
 import com.niit.entity.Resume;
 import com.niit.util.HibernateUtil;
@@ -21,6 +22,57 @@ public class ResumeDaoImpl implements ResumeDao {
 
     Session session = HibernateUtil.getCurrentSession();
 
+    @Override
+    public void updateResumePassOrNot(String resumeId, String passOrNot) {
+        Session session = HibernateUtil.getCurrentSession();
+        Transaction ts = session.beginTransaction();
+        String newPassValue = null;
+//        如果passornot是1就通过，否则不通过
+        if (passOrNot.equals("1")){
+            newPassValue = "通过";
+            System.out.println("1111111通过");
+        }
+        else {
+            newPassValue = "不通过";
+            System.out.println("00000000000000不通过");
+        }
+        System.out.println("最终的结果是"+newPassValue);
+        //先查后改
+        String hql = "UPDATE MessageResume m set m.pass = :newPass WHERE m.resumeId = :resumeId";
+        Query query = session.createQuery(hql);
+        query.setParameter("newPass", newPassValue);
+        query.setParameter("resumeId", resumeId);
+        query.executeUpdate();
+        ts.commit();
+    }
+
+    @Override
+    public List<Resume> findAllResumeByMessageId(String messageId) {
+        Session session = HibernateUtil.getCurrentSession();
+        Transaction ts = session.beginTransaction();
+        //查询未申请的招聘信息
+        String hql = "from Resume where   resumeId in (select resumeId from MessageResume where messageId = :messageId)";
+
+
+        Query query = session.createQuery(hql);
+        //设置参数
+        query.setParameter("messageId", messageId);
+
+
+        List<Resume> allResumeByMessageId = (List<Resume>)query.list();
+        ts.commit();
+        return allResumeByMessageId;
+    }
+
+    /**
+     * 根据岗位id获取已经投递的简历
+     * @param positionId
+     * @return
+     */
+    @Override
+    public List<Resume> findResumeByPositionId(String positionId) {
+        return null;
+    }
 
     /**
      * 添加
@@ -62,8 +114,6 @@ public class ResumeDaoImpl implements ResumeDao {
     @Override
     public void update(Resume resume) {
         Session session = HibernateUtil.getCurrentSession();
-
-
         Transaction ts = session.beginTransaction();
         //先查后改
         Resume resume1 = session.get(Resume.class, resume.getResumeId());
@@ -119,6 +169,7 @@ public class ResumeDaoImpl implements ResumeDao {
         messageResume.setId(UUID.randomUUID().toString());
         messageResume.setResumeId(resumeId);
         messageResume.setMessageId(messageId);
+        messageResume.setPass("待审核");
         //用来判断该招聘信息是否被申请
         messageResume.setStudentId(studentId);
         session.save(messageResume);

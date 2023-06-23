@@ -32,6 +32,29 @@ public class ResumeController {
     StudentService studentService = new StudentServiceImpl();
 
     /**
+     * 管理员审核学生简历check student 2023/6/23
+     */
+    @RequestMapping(value = "checkResume")
+    public String emoloyerPassResume(Model model, HttpSession session,String resumeId,String flag) {
+        System.out.println("这里是Resume Controller 中的pass_stu中的flag" + flag);
+        System.out.println("这里是Resume Controller 中的pass_stu中的Resumeid" + resumeId  );
+//        这里，1为通过，0为不通过
+        resumeService.updateResumePassOrNot(resumeId,flag);
+
+        return "redirect:/notice/employerAllMessages";
+    }
+    /**
+     * 管理员查询对应岗位的全部学生简历check student 2023/6/23
+     */
+    @RequestMapping(value = "check_stu")
+    public String emoloyerCheckResume(Model model, HttpSession session, String messageId) {
+        System.out.println("这里是Resume Controller 中的check_stu中的messageid" + messageId);
+//        这里是根据messageId查询出所有的简历
+        List<Resume> allResume = resumeService.findAllResumeByMessageId(messageId);
+        model.addAttribute("resumeList", allResume);
+        return "index/recruitment-checkstu";
+    }
+    /**
      * 显示学生信息
      *
      * @param model   模型
@@ -46,7 +69,6 @@ public class ResumeController {
         // Student student = studentService.findStudentById(studentId);
         Student student = studentService.findStudentById(studentId);
         if (student != null) {
-
             model.addAttribute("studentId", student.getStudentId());
             model.addAttribute("name", student.getName());
             model.addAttribute("sex", student.getSex());
@@ -56,9 +78,6 @@ public class ResumeController {
             model.addAttribute("speciality", student.getSpeciality());
         }
         return "index/apply";
-
-
-
     }
 
     /**

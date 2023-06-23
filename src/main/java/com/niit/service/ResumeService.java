@@ -14,12 +14,22 @@ import java.util.List;
  */
 public interface ResumeService {
 
+    void updateResumePassOrNot(String resumeId, String passOrNot);
+
+    List<Resume> findAllResumeByMessageId(String messageId);
+    /**
+     * 查看对指定岗位投递的简历
+     *
+     */
+    List<Resume> findResumeByPositionId(String positionId);
+
     /**
      * 添加简历
      *
      * @param resume 简历
      */
     void addResume(Resume resume);
+
 
     /**
      * 添加记录

@@ -2,6 +2,7 @@
 
  import com.niit.dao.StudentDao;
  import com.niit.dao.impl.StudentDaoImpl;
+ import com.niit.entity.MessageState;
  import com.niit.entity.Student;
  import com.niit.service.StudentService;
  import org.springframework.stereotype.Service;
@@ -20,7 +21,12 @@
 //     @Resource
      StudentDao studentDao = new StudentDaoImpl();
 
-//     @Transactional
+     @Override
+     public List<MessageState> findResumeStateByStudentId(String studentId) {
+         return studentDao.findResumeStateByStudentId(studentId);
+     }
+
+     //     @Transactional
      @Override
      public void addStudent(Student student) {
          studentDao.addStudent(student);
@@ -44,5 +50,10 @@
      @Override
      public void deleteStudent(Integer studentId) {
          studentDao.deleteStudent(studentId);
+     }
+
+        @Override
+     public void findAllResumeMessage(){
+         studentDao.findAllResumeMessage();
      }
  }

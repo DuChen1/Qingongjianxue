@@ -1,14 +1,16 @@
 package com.niit.dao.impl;
 
+import com.niit.dao.ResumeDao;
 import com.niit.dao.StudentDao;
-import com.niit.entity.Student;
+import com.niit.entity.*;
 import com.niit.util.HibernateUtil;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,12 +19,67 @@ import java.util.List;
 @Component("studentDao")
 //@Repository("studentDao")
 public class StudentDaoImpl implements StudentDao {
+    /** 2023.6.22
+     * 查看某个学生的简历通过情况
+     */
+    @Override
+    public List<MessageState> findResumeStateByStudentId(String studentId) {
+        Session session = HibernateUtil.getCurrentSession();
+        Transaction ts = session.beginTransaction();
+        String hql = "SELECT mr.message.position,mr.pass FROM MessageResume mr WHERE mr.studentId = :studentId";
+        Query query = session.createQuery(hql);
+        query.setParameter("studentId", Integer.parseInt(studentId));
+
+        List<Object[]> results = query.list();
+        List<MessageState> stateResults = new ArrayList<>();
+        for (Object[] result : results) {
+            MessageState messageState = new MessageState();
+            messageState.setMessageName((String) result[0]);
+            messageState.setPass((String) result[1]);
+            stateResults.add(messageState);
+        }
+        System.out.println("输出简历通过结果");
+        for (MessageState stateResult : stateResults) {
+            System.out.println("结果出来啦！！"+stateResult.getMessageName()+stateResult.getPass());
+//            System.out.println("结果出来啦！！"+stateResult.getMessageName());
+        }
+        ts.commit();
+
+        return stateResults;
+    }
+
+    /** 2023.6.22
+     * 查看某个学生的简历通过情况 (废弃)
+     */
+    @Override
+    public List<Resume> findPersonalResume(String studentId) {
+        Session session = HibernateUtil.getCurrentSession();
+        Transaction ts = session.beginTransaction();
+        String HQL = "from Resume where studentId= :studentId";
+        Query query = session.createQuery(HQL);
+        query.setParameter("studentId", Integer.parseInt(studentId));
+        List<Resume> allResume  = (List<Resume>)query.list();
+        ts.commit();
+        return allResume;
+    }
+
+
+    @Override
+    public MessageResume findAllResumeMessage() {
+        Session session1 =  HibernateUtil.getCurrentSession();
+        Transaction ts = session1.beginTransaction();
+        MessageResume messageResume = session1.get(MessageResume.class, 1);
+        ts.commit();
+        return messageResume;
+    }
 
 //    @Autowired
 //    SessionFactory factory;
 
     //等价于 先session factory  然后Session  session =  factory.getCurrentSession
 //    Session session =  HibernateUtil.getCurrentSession();
+
+
 
 
     /**
@@ -80,6 +137,8 @@ public class StudentDaoImpl implements StudentDao {
         ts.commit();
         return student;
     }
+
+
 
 
     /**

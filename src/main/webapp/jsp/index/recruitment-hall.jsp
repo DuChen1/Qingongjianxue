@@ -111,7 +111,6 @@
                <div class="card  col-8">
                    <div class="  p-2 title-back rounded border">
                        <a href="#collapse${index.index+1}" class="btn fs-5 a-back " data-bs-toggle="collapse">
-
                            ${message.position}
                        </a>
                    </div>
@@ -128,6 +127,7 @@
                                <a href="${pageContext.request.contextPath}/resume/stu_info?messageId=${message.messageId}" class="btn btn-back col-3 text-white  fs-5">
                                    申请
                                </a>
+
                            </div>
 
                        </div>

@@ -1,5 +1,6 @@
 //登录界面的javascript的登录格式验证
 
+
 //用户登录格式
  onclick_user = function() {
     if(form_user.user.value == null || form_user.user.value == "" || !new RegExp("^\\d{9}$").test(form_user.user.value)){

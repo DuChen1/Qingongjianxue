@@ -4,6 +4,7 @@ import com.niit.dao.ResumeDao;
 import com.niit.dao.impl.ResumeDaoImpl;
 import com.niit.entity.Resume;
 import com.niit.service.ResumeService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,9 +13,31 @@ import java.util.List;
  *
  * @Date: 2022/12/13 8:47
  */
+@Service("resumeService")
 public class ResumeServiceImpl implements ResumeService {
 
     ResumeDao resumeDao = new ResumeDaoImpl();
+
+    @Override
+    public void updateResumePassOrNot(String resumeId, String passOrNot) {
+        resumeDao.updateResumePassOrNot(resumeId, passOrNot);
+    }
+
+    @Override
+    public List<Resume> findAllResumeByMessageId(String messageId) {
+        return resumeDao.findAllResumeByMessageId(messageId);
+    }
+
+    /**
+     * 查看对指定岗位投递的简历
+     *2023.6.22 10:46
+     * @param positionId 岗位id
+     * @return {@link List}<{@link Resume}>
+     */
+    @Override
+    public List<Resume> findResumeByPositionId(String positionId) {
+        return resumeDao.findResumeByPositionId(positionId);
+    }
 
     /**
      * 添加简历

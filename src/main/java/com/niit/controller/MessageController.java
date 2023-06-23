@@ -175,7 +175,7 @@ public class MessageController {
         message.setPass("待审核");
         message.setMessageId(UUID.randomUUID().toString());
          String employerId = session.getAttribute("studentId").toString();
-        System.out.println("");
+
          String name = session.getAttribute("name").toString();
          message.setEmployerId(Integer.parseInt(employerId));
          message.setEmployerName(name);

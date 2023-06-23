@@ -58,8 +58,8 @@
                     <%--                    <form action="${pageContext.request.contextPath}/admin/adminLogin" method="post" name="form_admin">   &lt;%&ndash;管理员登录的表单，提交给AdminLoginServlet进行处理&ndash;%&gt;--%>
                     <form action="${pageContext.request.contextPath}/admin/adminLogin" method="post">   <%--管理员登录的表单，提交给AdminLoginServlet进行处理--%>
                         <div class="group">
-                            <label class="label">管理员账号</label>
-                            <input name="adminUsername" type="text" class="input" >
+                            <label class="la    bel">管理员账号</label>
+                            <input name="adminUsername" id="adminUsername" type="text" class="input" >
                         </div>
                         <div class="group">
                             <label class="label">管理员密码</label>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="group">
                             <%--以button方式进行javascript点击函数处理，验证管理员登录格式，并提交--%>
-                            <input type="submit" class="button"  value="登录">
+                            <input type="submit" class="button" onclick="checkusername()" value="登录">
                         </div>
                     </form>
                 </div>
@@ -79,6 +79,15 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function checkusername(){
+        var d=document.getElementById('adminUsername').value;
+        if(d.length>15){
+            alert("最大只可以输入15个字符");
+            event.preventDefault();
+        }
 
+    }
+</script>
 </body>
 </html>

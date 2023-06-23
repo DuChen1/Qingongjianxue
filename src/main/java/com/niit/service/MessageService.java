@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface MessageService {
 
+    List<Message> findMessageByEmployerId(int employerId);
     /**
      * 添加招聘信息
      *

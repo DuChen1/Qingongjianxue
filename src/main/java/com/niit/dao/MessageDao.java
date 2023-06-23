@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface MessageDao {
 
+    List<Message> findMessageByEmployerId(int employerId);
     /**
      * 添加招聘信息
      *

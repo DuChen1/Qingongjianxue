@@ -16,6 +16,17 @@ import java.util.List;
 public class MessageServiceImpl implements MessageService {
 
     MessageDao messageDao = new MessageDaoImpl();
+
+    /**
+     * 查看某个公司全部的简历信息 2023/6/22 10:46
+     * @param employerId
+     * @return
+     */
+    @Override
+    public List<Message> findMessageByEmployerId(int employerId) {
+        return messageDao.findMessageByEmployerId(employerId);
+    }
+
     /**
      * 添加招聘信息
      *

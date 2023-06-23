@@ -19,6 +19,56 @@ import java.util.List;
 @Component("messageDao")
 public class MessageDaoImpl implements MessageDao {
     /**
+     * 查看某个公司全部的简历信息 2023/6/22 10:46
+     * @param employerId
+     * @return
+     */
+    @Override
+    public List<Message> findMessageByEmployerId(int employerId) {
+        Session session = HibernateUtil.getCurrentSession();
+        Transaction ts = session.beginTransaction();
+        //查询未申请的招聘信息
+        String hql = "from Message where   employerId =: employerId";
+
+
+        Query query = session.createQuery(hql);
+        //设置参数
+        query.setParameter("employerId", employerId);
+
+
+        List<Message> allMessageByEmployerId = (List<Message>)query.list();
+        ts.commit();
+        return allMessageByEmployerId;
+    }
+
+    /**
+     * 查找某一个学生可以申请的全部招聘信息
+     * time 2023/6/19 23:19
+     * @param studentId 学生id
+     * @return {@link List}<{@link Message}>
+     */
+    @Override
+    public List<Message> findAllMessage(String studentId) {
+        Session session = HibernateUtil.getCurrentSession();
+        Transaction ts = session.beginTransaction();
+        //查询未申请的招聘信息
+        String hql = "from Message where  pass =:pass and messageId not in" +
+                " (select messageId from MessageResume where studentId = :studentId)";
+
+        Query query = session.createQuery(hql);
+        //设置参数
+        query.setParameter("studentId", Integer.parseInt(studentId));
+        query.setParameter("pass", "是");
+
+        List<Message> allMessage = (List<Message>)query.list();
+        ts.commit();
+        return allMessage;
+    }
+
+
+
+
+    /**
      * 添加招聘信息
      *
      * @param message 招聘信息
@@ -61,28 +111,7 @@ public class MessageDaoImpl implements MessageDao {
 
     }
 
-    /**
-     * 查找所有未申请的招聘信息
-     *
-     * @param studentId 学生id
-     * @return {@link List}<{@link Message}>
-     */
-    @Override
-    public List<Message> findAllMessage(String studentId) {
-        Session session = HibernateUtil.getCurrentSession();
-        Transaction ts = session.beginTransaction();
-        //查询未申请的招聘信息
-        String hql = "from Message where messageId not in\n" +
-                " (select messageId from MessageResume where studentId = :studentId)";
 
-        Query query = session.createQuery(hql);
-        //设置参数
-        query.setParameter("studentId", Integer.parseInt(studentId));
-
-        List<Message> allMessage = (List<Message>)query.list();
-        ts.commit();
-        return allMessage;
-    }
 
     /**
      * 按id查找招聘信息

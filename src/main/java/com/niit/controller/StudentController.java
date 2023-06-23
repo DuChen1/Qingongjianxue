@@ -1,5 +1,7 @@
 package com.niit.controller;
 
+import com.niit.entity.MessageResume;
+import com.niit.entity.MessageState;
 import com.niit.entity.Student;
 import com.niit.service.StudentService;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,25 @@ public class StudentController {
     @Resource
     StudentService studentService;
 
-
+    /**
+     * 学生查询所有已经申请的招聘信息的状态 2023.6.23
+     * @return
+     */
+    @GetMapping("allWork")
+    public String allWork(Model model,HttpSession session){
+        String studentId =session.getAttribute("studentId").toString();
+        List<MessageState> list =studentService.findResumeStateByStudentId(studentId);
+        System.out.println("这里要进行简历状态查询的学生id是"+studentId);
+        for (MessageState messageState : list) {
+            System.out.println("这是该学生简历的状态信息"+messageState);
+        }
+        return "index/index";
+//        List<Student> list =studentService.findAllStudent();
+//
+//        model.addAttribute("list", list);
+//        System.out.println("从后端查出来的学生列表"+list);
+//        return "back-end/student";
+    }
 
     @GetMapping("toAddStudent")
     public String toAddStudent(){
